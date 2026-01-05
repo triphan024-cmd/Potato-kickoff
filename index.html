@@ -260,10 +260,34 @@
             </div>
         `;
 
+        // NEW: Inline Next Section Button Component
+        const NextSectionButton = (targetId, label = "Tiếp theo") => `
+            <div class="w-full flex justify-center mt-8 pb-4">
+                <button onclick="scrollToSection('${targetId}')" class="group flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-all duration-300 focus:outline-none">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 group-hover:text-blue-500 transition-colors">${label}</span>
+                    <div class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center group-hover:border-blue-300 group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-chevron-down text-slate-400 group-hover:text-blue-500 animate-bounce text-sm"></i>
+                    </div>
+                </button>
+            </div>
+        `;
+
+        // NEW: Back to Top Button Component
+        const BackToTopButton = () => `
+            <div class="w-full flex justify-center mt-12 pb-8">
+                <button onclick="scrollToSection('hero')" class="group flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-all duration-300 focus:outline-none">
+                    <div class="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 shadow-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-500 group-hover:shadow-blue-200/50 group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-arrow-up text-white animate-pulse text-lg"></i>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 group-hover:text-blue-600 transition-colors mt-2">Về đầu trang</span>
+                </button>
+            </div>
+        `;
+
         function renderHome() {
             mainDisplayArea.innerHTML = `
                 <!-- HERO SECTION START -->
-                <section id="hero" class="min-h-screen flex flex-col justify-center py-10">
+                <section id="hero" class="min-h-screen flex flex-col justify-center py-10 relative">
                     <div class="relative w-full flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh] mb-10 rounded-3xl overflow-hidden bg-[#00aeef] text-white shadow-2xl group/hero">
                         <!-- Dynamic Background -->
                         <div class="absolute inset-0 overflow-hidden">
@@ -415,6 +439,7 @@
                             </div>
                         </div>
                     </div>
+                    ${NextSectionButton('potato-culture')}
                 </section>
 
                 <!-- SECTION 2: POTATO CULTURE -->
@@ -542,6 +567,7 @@
                             </div>
                         </div>
                     </div>
+                    ${NextSectionButton('practical')}
                 </section>
 
                 <!-- SECTION 3: PRACTICAL APPLICATION -->
@@ -678,7 +704,7 @@
                                 <div id="app-c3" class="home-collapse-content w-full">
                                      <div class="bg-amber-50/50 p-2 rounded mb-2 border border-amber-100 text-left mt-2">
                                         <div class="text-[10px] font-bold text-amber-500 uppercase mb-1 flex items-center gap-1"><i class="fas fa-bolt text-[9px]"></i>Mindset</div>
-                                        <p class="text-xs text-slate-600 italic leading-relaxed">"Quy trình (SOP) là để phục vụ công việc, không phải để cản trở. Nếu thủ tục nào gây ra 'độ trễ' không cần thiết (chờ ký, chờ duyệt), hãy đề xuất cắt bỏ."</p>
+                                        <p class="text-xs text-slate-600 italic leading-relaxed">"Quy trình SOP là để phục vụ công việc, không phải để cản trở. Nếu thủ tục nào gây ra 'độ trễ' không cần thiết (chờ ký, chờ duyệt), hãy cắt bỏ."</p>
                                     </div>
                                      <div class="bg-white p-3 rounded shadow-sm border border-slate-100 text-left">
                                         <div class="text-xs text-red-500 mb-1"><i class="fas fa-times-circle mr-1"></i> Không còn: <span class="italic text-slate-500">“xếp lịch – chăm sóc”</span></div>
@@ -941,6 +967,7 @@
                             </div>
                         </div>
                     </div>
+                    ${BackToTopButton()}
                 </section>
             `;
 
